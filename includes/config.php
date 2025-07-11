@@ -1,0 +1,37 @@
+<?php
+// Configuración básica del sistema
+define('DB_HOST', 'localhost');
+define('DB_USER', 'cma110690_masercom');
+define('DB_PASS', 'T%R0dr1g03009%');
+define('DB_NAME', 'cma110690_masercom_tickets');
+define('BASE_URL', 'https://masercom.com/ticket/');
+define('SITE_NAME', 'MASERCOM Tickets');
+define('ADMIN_EMAIL', 'soporte@masercom.cl');
+
+// Configuración de correo
+define('MAIL_HOST', 'mail.masercom.cl');
+define('MAIL_USER', 'tickets@masercom.cl');
+define('MAIL_PASS', '%R0dr1g03009%');
+define('MAIL_PORT', 587);
+define('MAIL_FROM', 'tickets@masercom.cl');
+define('MAIL_FROM_NAME', 'Sistema de Tickets MASERCOM');
+
+// Configuración de Active Directory
+define('AD_SERVER', 'ldap://cl1.masercom.cl');
+define('AD_DOMAIN', 'masercom.cl');
+define('AD_BASEDN', 'dc=masercom,dc=cl');
+define('AD_USER', 'admin_ad@masercom.cl');
+define('AD_PASS', '%R0dr1g03009%');
+
+// Iniciar sesión
+session_start();
+
+// Zona horaria
+date_default_timezone_set('America/Santiago');
+
+// Manejo de errores
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+ini_set('error_log', __DIR__ . '/../error.log');
+?>
