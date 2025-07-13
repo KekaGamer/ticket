@@ -1,10 +1,13 @@
 <?php
 // Configuración básica del sistema
 define('DB_HOST', 'localhost');
-define('DB_USER', 'cma110690_masercom');
-define('DB_PASS', 'T%R0dr1g03009%');
+define('DB_USER', 'cma110690_masercom'); // <-- ¡Verifica esta credencial!
+define('DB_PASS', '%R0dr1g03009%'); // <-- ¡Verifica esta credencial!
 define('DB_NAME', 'cma110690_masercom_tickets');
-define('BASE_URL', 'https://masercom.com/ticket/');
+
+// LÍNEA CORREGIDA
+define('BASE_URL', 'https://masercom.cl/ticket/'); // Corregido a .cl
+
 define('SITE_NAME', 'MASERCOM Tickets');
 define('ADMIN_EMAIL', 'soporte@masercom.cl');
 

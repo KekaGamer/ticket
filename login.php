@@ -8,7 +8,8 @@ $error = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'];
-    $useAD = isset($_POST['use_ad']) ? true : false;
+    // Se establece $useAD como false ya que la funcionalidad está deshabilitada
+    $useAD = false; 
     
     if ($auth->login($email, $password, $useAD)) {
         // Redirigir según el rol del usuario
@@ -63,10 +64,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="password" id="password" name="password" required class="form-control">
                 </div>
                 
+                <?php /*
                 <div class="form-group form-check">
                     <input type="checkbox" id="use_ad" name="use_ad" class="form-check-input">
                     <label for="use_ad" class="form-check-label">Usar Active Directory</label>
                 </div>
+                */ ?>
                 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>

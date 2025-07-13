@@ -129,10 +129,7 @@ if ($action == 'list') {
     $query .= " ORDER BY t.fecha_creacion DESC";
     
     $stmt = $conn->prepare($query);
-    foreach ($params as $key => $value) {
-        $stmt->bindParam($key, $value);
-    }
-    $stmt->execute();
+    $stmt->execute($params);
     $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
@@ -151,7 +148,8 @@ $tecnicos = $conn->query("SELECT id, nombre, apellido FROM usuarios WHERE rol = 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
+    <link rel="stylesheet" href="../assets/css/profesional.css">
+    </head>
 <body>
     <?php include '../includes/header.php'; ?>
     
@@ -184,51 +182,48 @@ $tecnicos = $conn->query("SELECT id, nombre, apellido FROM usuarios WHERE rol = 
             
             <?php if ($action == 'list'): ?>
                 <div class="card">
-                    <div class="card-header">
-                        <h2>Listado de Tickets</h2>
-                        <div class="filters">
-                            <form method="GET" class="form-inline">
-                                <input type="hidden" name="action" value="list">
-                                
-                                <div class="form-group">
-                                    <label for="estado">Estado:</label>
-                                    <select id="estado" name="estado" class="form-control">
-                                        <option value="">Todos</option>
-                                        <option value="abierto" <?php echo $filtro_estado == 'abierto' ? 'selected' : ''; ?>>Abiertos</option>
-                                        <option value="pendiente" <?php echo $filtro_estado == 'pendiente' ? 'selected' : ''; ?>>Pendientes</option>
-                                        <option value="cerrado" <?php echo $filtro_estado == 'cerrado' ? 'selected' : ''; ?>>Cerrados</option>
-                                        <option value="reabierto" <?php echo $filtro_estado == 'reabierto' ? 'selected' : ''; ?>>Reabiertos</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="prioridad">Prioridad:</label>
-                                    <select id="prioridad" name="prioridad" class="form-control">
-                                        <option value="">Todas</option>
-                                        <option value="baja" <?php echo $filtro_prioridad == 'baja' ? 'selected' : ''; ?>>Baja</option>
-                                        <option value="media" <?php echo $filtro_prioridad == 'media' ? 'selected' : ''; ?>>Media</option>
-                                        <option value="alta" <?php echo $filtro_prioridad == 'alta' ? 'selected' : ''; ?>>Alta</option>
-                                        <option value="critica" <?php echo $filtro_prioridad == 'critica' ? 'selected' : ''; ?>>Crítica</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="tecnico">Técnico:</label>
-                                    <select id="tecnico" name="tecnico" class="form-control">
-                                        <option value="">Todos</option>
-                                        <?php foreach ($tecnicos as $tec): ?>
-                                            <option value="<?php echo $tec['id']; ?>" <?php echo $filtro_tecnico == $tec['id'] ? 'selected' : ''; ?>>
-                                                <?php echo htmlspecialchars($tec['nombre'] . ' ' . $tec['apellido']); ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-filter"></i> Filtrar
-                                </button>
-                            </form>
-                        </div>
+                    <div class="card-header filters">
+                        <form method="GET" class="form-inline">
+                            <input type="hidden" name="action" value="list">
+                            
+                            <div class="form-group">
+                                <label for="estado">Estado:</label>
+                                <select id="estado" name="estado" class="form-control">
+                                    <option value="">Todos</option>
+                                    <option value="abierto" <?php echo $filtro_estado == 'abierto' ? 'selected' : ''; ?>>Abiertos</option>
+                                    <option value="pendiente" <?php echo $filtro_estado == 'pendiente' ? 'selected' : ''; ?>>Pendientes</option>
+                                    <option value="cerrado" <?php echo $filtro_estado == 'cerrado' ? 'selected' : ''; ?>>Cerrados</option>
+                                    <option value="reabierto" <?php echo $filtro_estado == 'reabierto' ? 'selected' : ''; ?>>Reabiertos</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="prioridad">Prioridad:</label>
+                                <select id="prioridad" name="prioridad" class="form-control">
+                                    <option value="">Todas</option>
+                                    <option value="baja" <?php echo $filtro_prioridad == 'baja' ? 'selected' : ''; ?>>Baja</option>
+                                    <option value="media" <?php echo $filtro_prioridad == 'media' ? 'selected' : ''; ?>>Media</option>
+                                    <option value="alta" <?php echo $filtro_prioridad == 'alta' ? 'selected' : ''; ?>>Alta</option>
+                                    <option value="critica" <?php echo $filtro_prioridad == 'critica' ? 'selected' : ''; ?>>Crítica</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="tecnico">Técnico:</label>
+                                <select id="tecnico" name="tecnico" class="form-control">
+                                    <option value="">Todos</option>
+                                    <?php foreach ($tecnicos as $tec): ?>
+                                        <option value="<?php echo $tec['id']; ?>" <?php echo $filtro_tecnico == $tec['id'] ? 'selected' : ''; ?>>
+                                            <?php echo htmlspecialchars($tec['nombre'] . ' ' . $tec['apellido']); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-filter"></i> Filtrar
+                            </button>
+                        </form>
                     </div>
                     <div class="card-body">
                         <table id="ticketsTable" class="display" style="width:100%">

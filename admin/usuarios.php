@@ -18,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $apellido = filter_input(INPUT_POST, 'apellido', FILTER_SANITIZE_STRING);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $rol = filter_input(INPUT_POST, 'rol', FILTER_SANITIZE_STRING);
-    $id_empresa = filter_input(INPUT_POST, 'id_empresa', FILTER_SANITIZE_NUMBER_INT);
-    $id_area = filter_input(INPUT_POST, 'id_area', FILTER_SANITIZE_NUMBER_INT);
+    $id_empresa = filter_input(INPUT_POST, 'id_empresa', FILTER_SANITIZE_NUMBER_INT) ?: null;
+    $id_area = filter_input(INPUT_POST, 'id_area', FILTER_SANITIZE_NUMBER_INT) ?: null;
     $password = $_POST['password'] ?? '';
     $confirm_password = $_POST['confirm_password'] ?? '';
     
@@ -69,7 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $query .= ", foto_perfil = :foto_perfil";
             $params[':foto_perfil'] = $foto_perfil;
             
-            // Eliminar foto anterior si existe
             $stmt = $conn->prepare("SELECT foto_perfil FROM usuarios WHERE id = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
@@ -94,11 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $query .= " WHERE id = :id";
             $stmt = $conn->prepare($query);
             
-            foreach ($params as $key => $value) {
-                $stmt->bindParam($key, $value);
-            }
-            
-            if ($stmt->execute()) {
+            if ($stmt->execute($params)) {
                 $_SESSION['success_message'] = "Usuario actualizado correctamente.";
                 header("Location: usuarios.php");
                 exit();
@@ -141,12 +136,17 @@ $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Obtener empresas y áreas para selects
 $empresas = $conn->query("SELECT * FROM empresas WHERE estado = 1 ORDER BY nombre")->fetchAll(PDO::FETCH_ASSOC);
-$areas = $conn->query("SELECT a.*, e.nombre as empresa_nombre, u.nombre as unidad_nombre 
-                       FROM areas a 
-                       JOIN unidades u ON a.id_unidad = u.id 
-                       JOIN empresas e ON u.id_empresa = e.id 
-                       WHERE a.estado = 1 
-                       ORDER BY e.nombre, u.nombre, a.nombre")->fetchAll(PDO::FETCH_ASSOC);
+
+// ---- INICIO DE LA CORRECCIÓN ----
+$query_areas = "SELECT a.id, a.id_unidad, u.id_gerencia, g.id_empresa, a.nombre, u.nombre as unidad_nombre, g.nombre as gerencia_nombre, e.nombre as empresa_nombre 
+                FROM areas a
+                JOIN unidades u ON a.id_unidad = u.id
+                JOIN gerencias g ON u.id_gerencia = g.id
+                JOIN empresas e ON g.id_empresa = e.id
+                WHERE a.estado = 1 
+                ORDER BY e.nombre, g.nombre, u.nombre, a.nombre";
+$areas = $conn->query($query_areas)->fetchAll(PDO::FETCH_ASSOC);
+// ---- FIN DE LA CORRECCIÓN ----
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -159,91 +159,36 @@ $areas = $conn->query("SELECT a.*, e.nombre as empresa_nombre, u.nombre as unida
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/profesional.css">
 </head>
 <body>
     <?php include '../includes/header.php'; ?>
-    
     <div class="container">
         <?php include 'sidebar.php'; ?>
-        
         <main class="main-content">
             <div class="page-header">
                 <h1>Gestión de Usuarios</h1>
                 <div class="actions">
-                    <a href="usuarios.php?action=create" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> Nuevo Usuario
-                    </a>
+                     <?php if ($action != 'list'): ?>
+                    <a href="usuarios.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Volver a la lista</a>
+                    <?php else: ?>
+                    <a href="usuarios.php?action=create" class="btn btn-primary"><i class="fas fa-plus"></i> Nuevo Usuario</a>
+                    <?php endif; ?>
                 </div>
             </div>
             
             <?php if (isset($_SESSION['success_message'])): ?>
-                <div class="alert alert-success">
-                    <?php echo $_SESSION['success_message']; unset($_SESSION['success_message']); ?>
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                </div>
+                <div class="alert alert-success"><?php echo $_SESSION['success_message']; unset($_SESSION['success_message']); ?></div>
             <?php endif; ?>
-            
             <?php if (isset($error)): ?>
-                <div class="alert alert-danger">
-                    <?php echo $error; ?>
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                </div>
+                <div class="alert alert-danger"><?php echo $error; ?></div>
             <?php endif; ?>
             
             <?php if ($action == 'list'): ?>
-                <div class="card">
+                 <div class="card">
                     <div class="card-body">
                         <table id="usuariosTable" class="display" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Email</th>
-                                    <th>Rol</th>
-                                    <th>Empresa</th>
-                                    <th>Área</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($usuarios as $usr): ?>
-                                    <tr>
-                                        <td><?php echo $usr['id']; ?></td>
-                                        <td>
-                                            <?php if ($usr['foto_perfil']): ?>
-                                                <img src="../assets/img/users/<?php echo htmlspecialchars($usr['foto_perfil']); ?>" alt="Foto perfil" class="user-avatar-sm">
-                                            <?php endif; ?>
-                                            <?php echo htmlspecialchars($usr['nombre'] . ' ' . $usr['apellido']); ?>
-                                        </td>
-                                        <td><?php echo htmlspecialchars($usr['email']); ?></td>
-                                        <td>
-                                            <span class="badge badge-<?php 
-                                                echo $usr['rol'] == 'admin' ? 'danger' : 
-                                                    ($usr['rol'] == 'tecnico' ? 'warning' : 'info'); 
-                                            ?>">
-                                                <?php echo ucfirst($usr['rol']); ?>
-                                            </span>
-                                        </td>
-                                        <td><?php echo htmlspecialchars($usr['empresa_nombre'] ?? 'N/A'); ?></td>
-                                        <td><?php echo htmlspecialchars($usr['area_nombre'] ?? 'N/A'); ?></td>
-                                        <td>
-                                            <span class="badge <?php echo $usr['estado'] ? 'badge-success' : 'badge-danger'; ?>">
-                                                <?php echo $usr['estado'] ? 'Activo' : 'Inactivo'; ?>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <a href="usuarios.php?action=edit&id=<?php echo $usr['id']; ?>" class="btn btn-sm btn-primary" title="Editar">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a href="usuarios.php?toggle=1&id=<?php echo $usr['id']; ?>" class="btn btn-sm btn-<?php echo $usr['estado'] ? 'warning' : 'success'; ?>" title="<?php echo $usr['estado'] ? 'Desactivar' : 'Activar'; ?>">
-                                                <i class="fas fa-<?php echo $usr['estado'] ? 'times' : 'check'; ?>"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                            </table>
                     </div>
                 </div>
             <?php elseif ($action == 'create' || $action == 'edit'): ?>
@@ -257,32 +202,23 @@ $areas = $conn->query("SELECT a.*, e.nombre as empresa_nombre, u.nombre as unida
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="nombre">Nombre</label>
-                                        <input type="text" class="form-control" id="nombre" name="nombre" 
-                                               value="<?php echo isset($usuario) ? htmlspecialchars($usuario['nombre']) : ''; ?>" required>
-                                        <div class="invalid-feedback">
-                                            Por favor ingrese el nombre del usuario.
-                                        </div>
+                                        <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo isset($usuario) ? htmlspecialchars($usuario['nombre']) : ''; ?>" required>
+                                        <div class="invalid-feedback">Por favor ingrese el nombre.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="apellido">Apellido</label>
-                                        <input type="text" class="form-control" id="apellido" name="apellido" 
-                                               value="<?php echo isset($usuario) ? htmlspecialchars($usuario['apellido']) : ''; ?>" required>
-                                        <div class="invalid-feedback">
-                                            Por favor ingrese el apellido del usuario.
-                                        </div>
+                                        <input type="text" class="form-control" id="apellido" name="apellido" value="<?php echo isset($usuario) ? htmlspecialchars($usuario['apellido']) : ''; ?>" required>
+                                        <div class="invalid-feedback">Por favor ingrese el apellido.</div>
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="form-group">
                                 <label for="email">Correo Electrónico</label>
-                                <input type="email" class="form-control" id="email" name="email" 
-                                       value="<?php echo isset($usuario) ? htmlspecialchars($usuario['email']) : ''; ?>" required>
-                                <div class="invalid-feedback">
-                                    Por favor ingrese un correo electrónico válido.
-                                </div>
+                                <input type="email" class="form-control" id="email" name="email" value="<?php echo isset($usuario) ? htmlspecialchars($usuario['email']) : ''; ?>" required>
+                                <div class="invalid-feedback">Por favor ingrese un correo válido.</div>
                             </div>
                             
                             <div class="row">
@@ -295,9 +231,7 @@ $areas = $conn->query("SELECT a.*, e.nombre as empresa_nombre, u.nombre as unida
                                             <option value="tecnico" <?php echo (isset($usuario) && $usuario['rol'] == 'tecnico') ? 'selected' : ''; ?>>Técnico</option>
                                             <option value="cliente" <?php echo (isset($usuario) && $usuario['rol'] == 'cliente') ? 'selected' : ''; ?>>Cliente</option>
                                         </select>
-                                        <div class="invalid-feedback">
-                                            Por favor seleccione un rol para el usuario.
-                                        </div>
+                                        <div class="invalid-feedback">Por favor seleccione un rol.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -306,8 +240,7 @@ $areas = $conn->query("SELECT a.*, e.nombre as empresa_nombre, u.nombre as unida
                                         <select class="form-control" id="id_empresa" name="id_empresa">
                                             <option value="">Seleccione una empresa</option>
                                             <?php foreach ($empresas as $emp): ?>
-                                                <option value="<?php echo $emp['id']; ?>" 
-                                                    <?php echo (isset($usuario) && $usuario['id_empresa'] == $emp['id']) ? 'selected' : ''; ?>>
+                                                <option value="<?php echo $emp['id']; ?>" <?php echo (isset($usuario) && $usuario['id_empresa'] == $emp['id']) ? 'selected' : ''; ?>>
                                                     <?php echo htmlspecialchars($emp['nombre']); ?>
                                                 </option>
                                             <?php endforeach; ?>
@@ -321,20 +254,18 @@ $areas = $conn->query("SELECT a.*, e.nombre as empresa_nombre, u.nombre as unida
                                 <select class="form-control" id="id_area" name="id_area">
                                     <option value="">Seleccione un área</option>
                                     <?php foreach ($areas as $area): ?>
-                                        <option value="<?php echo $area['id']; ?>" 
-                                            data-empresa="<?php echo $area['id_empresa']; ?>"
-                                            <?php echo (isset($usuario) && $usuario['id_area'] == $area['id']) ? 'selected' : ''; ?>>
-                                            <?php echo htmlspecialchars($area['empresa_nombre'] . ' - ' . $area['unidad_nombre'] . ' - ' . $area['nombre']); ?>
+                                        <option value="<?php echo $area['id']; ?>" data-empresa="<?php echo $area['id_empresa']; ?>" <?php echo (isset($usuario) && $usuario['id_area'] == $area['id']) ? 'selected' : ''; ?>>
+                                            <?php echo htmlspecialchars($area['empresa_nombre'] . ' - ' . $area['gerencia_nombre'] . ' - ' . $area['unidad_nombre'] . ' - ' . $area['nombre']); ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                             
                             <div class="form-group">
-                                <label for="foto_perfil">Foto de Perfil</label>
+                                <label>Foto de Perfil</label>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="foto_perfil" name="foto_perfil" accept="image/*">
-                                    <label class="custom-file-label" for="foto_perfil">Seleccionar archivo</label>
+                                    <label class="custom-file-label" for="foto_perfil">Elegir archivo...</label>
                                 </div>
                                 <?php if (isset($usuario) && $usuario['foto_perfil']): ?>
                                     <div class="mt-2">
@@ -343,33 +274,29 @@ $areas = $conn->query("SELECT a.*, e.nombre as empresa_nombre, u.nombre as unida
                                 <?php endif; ?>
                             </div>
                             
+                            <hr>
+                            
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="password"><?php echo $action == 'create' ? 'Contraseña' : 'Nueva Contraseña'; ?></label>
-                                        <input type="password" class="form-control" id="password" name="password" 
-                                               <?php echo $action == 'create' ? 'required' : ''; ?> minlength="6">
-                                        <div class="invalid-feedback">
-                                            Por favor ingrese una contraseña de al menos 6 caracteres.
-                                        </div>
+                                        <label for="password"><?php echo $action == 'create' ? 'Contraseña' : 'Nueva Contraseña (opcional)'; ?></label>
+                                        <input type="password" class="form-control" id="password" name="password" <?php echo $action == 'create' ? 'required' : ''; ?> minlength="6">
+                                        <div class="invalid-feedback">La contraseña debe tener al menos 6 caracteres.</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="confirm_password">Confirmar Contraseña</label>
-                                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" 
-                                               <?php echo $action == 'create' ? 'required' : ''; ?> minlength="6">
-                                        <div class="invalid-feedback">
-                                            Las contraseñas deben coincidir.
-                                        </div>
+                                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" <?php echo $action == 'create' ? 'required' : ''; ?>>
+                                        <div class="invalid-feedback">Las contraseñas no coinciden.</div>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="form-group text-right">
+                            <div class="form-actions">
                                 <a href="usuarios.php" class="btn btn-secondary">Cancelar</a>
                                 <button type="submit" class="btn btn-primary">
-                                    <?php echo $action == 'create' ? 'Crear Usuario' : 'Actualizar Usuario'; ?>
+                                    <i class="fas fa-save"></i> <?php echo $action == 'create' ? 'Crear Usuario' : 'Actualizar Usuario'; ?>
                                 </button>
                             </div>
                         </form>
@@ -382,72 +309,5 @@ $areas = $conn->query("SELECT a.*, e.nombre as empresa_nombre, u.nombre as unida
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#usuariosTable').DataTable({
-                language: {
-                    url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json'
-                },
-                columnDefs: [
-                    { orderable: false, targets: [7] }
-                ]
-            });
-            
-            // Validación de formulario
-            (function() {
-                'use strict';
-                window.addEventListener('load', function() {
-                    var forms = document.getElementsByClassName('needs-validation');
-                    Array.prototype.filter.call(forms, function(form) {
-                        form.addEventListener('submit', function(event) {
-                            if (form.checkValidity() === false) {
-                                event.preventDefault();
-                                event.stopPropagation();
-                            }
-                            
-                            // Validar que las contraseñas coincidan
-                            if ($('#password').val() !== $('#confirm_password').val()) {
-                                $('#confirm_password').addClass('is-invalid');
-                                event.preventDefault();
-                                event.stopPropagation();
-                            } else {
-                                $('#confirm_password').removeClass('is-invalid');
-                            }
-                            
-                            form.classList.add('was-validated');
-                        }, false);
-                    });
-                }, false);
-            })();
-            
-            // Filtrar áreas por empresa seleccionada
-            $('#id_empresa').change(function() {
-                const empresaId = $(this).val();
-                $('#id_area option').each(function() {
-                    const areaEmpresaId = $(this).data('empresa');
-                    if (!areaEmpresaId || areaEmpresaId == empresaId) {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                        if ($(this).prop('selected')) {
-                            $(this).prop('selected', false);
-                            $('#id_area').val('');
-                        }
-                    }
-                });
-            });
-            
-            // Mostrar nombre del archivo seleccionado
-            $('.custom-file-input').on('change', function() {
-                let fileName = $(this).val().split('\\').pop();
-                $(this).next('.custom-file-label').addClass("selected").html(fileName);
-            });
-            
-            // Inicializar filtro de áreas según empresa seleccionada
-            if ($('#id_empresa').val()) {
-                $('#id_empresa').trigger('change');
-            }
-        });
-    </script>
-</body>
+     </body>
 </html>

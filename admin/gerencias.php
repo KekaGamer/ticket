@@ -90,73 +90,37 @@ $empresas = $conn->query("SELECT * FROM empresas WHERE estado = 1 ORDER BY nombr
     <link rel="stylesheet" href="../assets/css/dashboard.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/profesional.css">
 </head>
 <body>
     <?php include '../includes/header.php'; ?>
-    
     <div class="container">
         <?php include 'sidebar.php'; ?>
-        
         <main class="main-content">
             <div class="page-header">
                 <h1>Gestión de Gerencias</h1>
                 <div class="actions">
-                    <a href="gerencias.php?action=create" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> Nueva Gerencia
-                    </a>
+                    <?php if ($action != 'list'): ?>
+                    <a href="gerencias.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Volver a la lista</a>
+                    <?php else: ?>
+                    <a href="gerencias.php?action=create" class="btn btn-primary"><i class="fas fa-plus"></i> Nueva Gerencia</a>
+                    <?php endif; ?>
                 </div>
             </div>
             
             <?php if (isset($_SESSION['success_message'])): ?>
-                <div class="alert alert-success">
-                    <?php echo $_SESSION['success_message']; unset($_SESSION['success_message']); ?>
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                </div>
+                <div class="alert alert-success"><?php echo $_SESSION['success_message']; unset($_SESSION['success_message']); ?></div>
             <?php endif; ?>
-            
             <?php if (isset($error)): ?>
-                <div class="alert alert-danger">
-                    <?php echo $error; ?>
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                </div>
+                <div class="alert alert-danger"><?php echo $error; ?></div>
             <?php endif; ?>
-            
+
             <?php if ($action == 'list'): ?>
                 <div class="card">
                     <div class="card-body">
                         <table id="gerenciasTable" class="display" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Empresa</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($gerencias as $ger): ?>
-                                    <tr>
-                                        <td><?php echo $ger['id']; ?></td>
-                                        <td><?php echo htmlspecialchars($ger['nombre']); ?></td>
-                                        <td><?php echo htmlspecialchars($ger['empresa_nombre']); ?></td>
-                                        <td>
-                                            <span class="badge <?php echo $ger['estado'] ? 'badge-success' : 'badge-danger'; ?>">
-                                                <?php echo $ger['estado'] ? 'Activo' : 'Inactivo'; ?>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <a href="gerencias.php?action=edit&id=<?php echo $ger['id']; ?>" class="btn btn-sm btn-primary" title="Editar">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a href="gerencias.php?toggle=1&id=<?php echo $ger['id']; ?>" class="btn btn-sm btn-<?php echo $ger['estado'] ? 'warning' : 'success'; ?>" title="<?php echo $ger['estado'] ? 'Desactivar' : 'Activar'; ?>">
-                                                <i class="fas fa-<?php echo $ger['estado'] ? 'times' : 'check'; ?>"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                            </table>
                     </div>
                 </div>
             <?php elseif ($action == 'create' || $action == 'edit'): ?>
@@ -171,24 +135,18 @@ $empresas = $conn->query("SELECT * FROM empresas WHERE estado = 1 ORDER BY nombr
                                 <select class="form-control" id="id_empresa" name="id_empresa" required>
                                     <option value="">Seleccione una empresa</option>
                                     <?php foreach ($empresas as $emp): ?>
-                                        <option value="<?php echo $emp['id']; ?>" 
-                                            <?php echo (isset($gerencia) && $gerencia['id_empresa'] == $emp['id']) ? 'selected' : ''; ?>>
+                                        <option value="<?php echo $emp['id']; ?>" <?php echo (isset($gerencia) && $gerencia['id_empresa'] == $emp['id']) ? 'selected' : ''; ?>>
                                             <?php echo htmlspecialchars($emp['nombre']); ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
-                                <div class="invalid-feedback">
-                                    Por favor seleccione una empresa.
-                                </div>
+                                <div class="invalid-feedback">Por favor seleccione una empresa.</div>
                             </div>
                             
                             <div class="form-group">
                                 <label for="nombre">Nombre de la Gerencia</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" 
-                                       value="<?php echo isset($gerencia) ? htmlspecialchars($gerencia['nombre']) : ''; ?>" required>
-                                <div class="invalid-feedback">
-                                    Por favor ingrese el nombre de la gerencia.
-                                </div>
+                                <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo isset($gerencia) ? htmlspecialchars($gerencia['nombre']) : ''; ?>" required>
+                                <div class="invalid-feedback">Por favor ingrese el nombre de la gerencia.</div>
                             </div>
                             
                             <div class="form-group">
@@ -196,10 +154,10 @@ $empresas = $conn->query("SELECT * FROM empresas WHERE estado = 1 ORDER BY nombr
                                 <textarea class="form-control" id="descripcion" name="descripcion" rows="3"><?php echo isset($gerencia) ? htmlspecialchars($gerencia['descripcion']) : ''; ?></textarea>
                             </div>
                             
-                            <div class="form-group text-right">
+                            <div class="form-actions">
                                 <a href="gerencias.php" class="btn btn-secondary">Cancelar</a>
                                 <button type="submit" class="btn btn-primary">
-                                    <?php echo $action == 'create' ? 'Crear Gerencia' : 'Actualizar Gerencia'; ?>
+                                    <i class="fas fa-save"></i> <?php echo $action == 'create' ? 'Crear Gerencia' : 'Actualizar Gerencia'; ?>
                                 </button>
                             </div>
                         </form>
@@ -212,34 +170,5 @@ $empresas = $conn->query("SELECT * FROM empresas WHERE estado = 1 ORDER BY nombr
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#gerenciasTable').DataTable({
-                language: {
-                    url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json'
-                },
-                columnDefs: [
-                    { orderable: false, targets: [4] }
-                ]
-            });
-            
-            // Validación de formulario
-            (function() {
-                'use strict';
-                window.addEventListener('load', function() {
-                    var forms = document.getElementsByClassName('needs-validation');
-                    Array.prototype.filter.call(forms, function(form) {
-                        form.addEventListener('submit', function(event) {
-                            if (form.checkValidity() === false) {
-                                event.preventDefault();
-                                event.stopPropagation();
-                            }
-                            form.classList.add('was-validated');
-                        }, false);
-                    });
-                }, false);
-            })();
-        });
-    </script>
-</body>
+    </body>
 </html>

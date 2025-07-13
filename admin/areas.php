@@ -11,7 +11,6 @@ $conn = $db->getConnection();
 $action = $_GET['action'] ?? 'list';
 $id = $_GET['id'] ?? 0;
 
-// Procesar formularios
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_STRING);
     $descripcion = filter_input(INPUT_POST, 'descripcion', FILTER_SANITIZE_STRING);
@@ -47,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Cambiar estado
 if (isset($_GET['toggle']) && $id > 0) {
     $stmt = $conn->prepare("UPDATE areas SET estado = NOT estado WHERE id = :id");
     $stmt->bindParam(':id', $id);
@@ -56,7 +54,6 @@ if (isset($_GET['toggle']) && $id > 0) {
     exit();
 }
 
-// Obtener datos para edición
 if ($action == 'edit' && $id > 0) {
     $stmt = $conn->prepare("SELECT * FROM areas WHERE id = :id");
     $stmt->bindParam(':id', $id);
@@ -69,7 +66,6 @@ if ($action == 'edit' && $id > 0) {
     }
 }
 
-// Listar áreas con información de unidad y gerencia
 $query = "SELECT a.*, u.nombre as unidad_nombre, g.nombre as gerencia_nombre, e.nombre as empresa_nombre 
           FROM areas a
           JOIN unidades u ON a.id_unidad = u.id
@@ -79,7 +75,6 @@ $query = "SELECT a.*, u.nombre as unidad_nombre, g.nombre as gerencia_nombre, e.
 $stmt = $conn->query($query);
 $areas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Obtener unidades para select
 $unidades = $conn->query("SELECT u.*, g.nombre as gerencia_nombre, e.nombre as empresa_nombre 
                           FROM unidades u
                           JOIN gerencias g ON u.id_gerencia = g.id
@@ -97,9 +92,11 @@ $unidades = $conn->query("SELECT u.*, g.nombre as gerencia_nombre, e.nombre as e
     <link rel="stylesheet" href="../assets/css/dashboard.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/profesional.css">
 </head>
 <body>
-    <?php include '../includes/header.php'; ?>
+    <?php $show_header = true; include '../includes/header.php'; ?>
     
     <div class="container">
         <?php include 'sidebar.php'; ?>
@@ -108,24 +105,19 @@ $unidades = $conn->query("SELECT u.*, g.nombre as gerencia_nombre, e.nombre as e
             <div class="page-header">
                 <h1>Gestión de Áreas</h1>
                 <div class="actions">
-                    <a href="areas.php?action=create" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> Nueva Área
-                    </a>
+                    <?php if ($action != 'list'): ?>
+                    <a href="areas.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Volver a la lista</a>
+                    <?php else: ?>
+                    <a href="areas.php?action=create" class="btn btn-primary"><i class="fas fa-plus"></i> Nueva Área</a>
+                    <?php endif; ?>
                 </div>
             </div>
             
             <?php if (isset($_SESSION['success_message'])): ?>
-                <div class="alert alert-success">
-                    <?php echo $_SESSION['success_message']; unset($_SESSION['success_message']); ?>
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                </div>
+                <div class="alert alert-success"><?php echo $_SESSION['success_message']; unset($_SESSION['success_message']); ?></div>
             <?php endif; ?>
-            
             <?php if (isset($error)): ?>
-                <div class="alert alert-danger">
-                    <?php echo $error; ?>
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                </div>
+                <div class="alert alert-danger"><?php echo $error; ?></div>
             <?php endif; ?>
             
             <?php if ($action == 'list'): ?>
@@ -151,18 +143,10 @@ $unidades = $conn->query("SELECT u.*, g.nombre as gerencia_nombre, e.nombre as e
                                         <td><?php echo htmlspecialchars($area['unidad_nombre']); ?></td>
                                         <td><?php echo htmlspecialchars($area['gerencia_nombre']); ?></td>
                                         <td><?php echo htmlspecialchars($area['empresa_nombre']); ?></td>
+                                        <td><span class="badge <?php echo $area['estado'] ? 'badge-success' : 'badge-danger'; ?>"><?php echo $area['estado'] ? 'Activo' : 'Inactivo'; ?></span></td>
                                         <td>
-                                            <span class="badge <?php echo $area['estado'] ? 'badge-success' : 'badge-danger'; ?>">
-                                                <?php echo $area['estado'] ? 'Activo' : 'Inactivo'; ?>
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <a href="areas.php?action=edit&id=<?php echo $area['id']; ?>" class="btn btn-sm btn-primary" title="Editar">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a href="areas.php?toggle=1&id=<?php echo $area['id']; ?>" class="btn btn-sm btn-<?php echo $area['estado'] ? 'warning' : 'success'; ?>" title="<?php echo $area['estado'] ? 'Desactivar' : 'Activar'; ?>">
-                                                <i class="fas fa-<?php echo $area['estado'] ? 'times' : 'check'; ?>"></i>
-                                            </a>
+                                            <a href="areas.php?action=edit&id=<?php echo $area['id']; ?>" class="btn btn-sm btn-primary" title="Editar"><i class="fas fa-edit"></i></a>
+                                            <a href="areas.php?toggle=1&id=<?php echo $area['id']; ?>" class="btn btn-sm btn-<?php echo $area['estado'] ? 'warning' : 'success'; ?>" title="<?php echo $area['estado'] ? 'Desactivar' : 'Activar'; ?>"><i class="fas fa-<?php echo $area['estado'] ? 'times' : 'check'; ?>"></i></a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -182,24 +166,18 @@ $unidades = $conn->query("SELECT u.*, g.nombre as gerencia_nombre, e.nombre as e
                                 <select class="form-control" id="id_unidad" name="id_unidad" required>
                                     <option value="">Seleccione una unidad</option>
                                     <?php foreach ($unidades as $unidad): ?>
-                                        <option value="<?php echo $unidad['id']; ?>" 
-                                            <?php echo (isset($area) && $area['id_unidad'] == $unidad['id']) ? 'selected' : ''; ?>>
+                                        <option value="<?php echo $unidad['id']; ?>" <?php echo (isset($area) && $area['id_unidad'] == $unidad['id']) ? 'selected' : ''; ?>>
                                             <?php echo htmlspecialchars($unidad['empresa_nombre'] . ' - ' . $unidad['gerencia_nombre'] . ' - ' . $unidad['nombre']); ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
-                                <div class="invalid-feedback">
-                                    Por favor seleccione una unidad.
-                                </div>
+                                <div class="invalid-feedback">Por favor seleccione una unidad.</div>
                             </div>
                             
                             <div class="form-group">
                                 <label for="nombre">Nombre del Área</label>
-                                <input type="text" class="form-control" id="nombre" name="nombre" 
-                                       value="<?php echo isset($area) ? htmlspecialchars($area['nombre']) : ''; ?>" required>
-                                <div class="invalid-feedback">
-                                    Por favor ingrese el nombre del área.
-                                </div>
+                                <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo isset($area) ? htmlspecialchars($area['nombre']) : ''; ?>" required>
+                                <div class="invalid-feedback">Por favor ingrese el nombre del área.</div>
                             </div>
                             
                             <div class="form-group">
@@ -207,11 +185,9 @@ $unidades = $conn->query("SELECT u.*, g.nombre as gerencia_nombre, e.nombre as e
                                 <textarea class="form-control" id="descripcion" name="descripcion" rows="3"><?php echo isset($area) ? htmlspecialchars($area['descripcion']) : ''; ?></textarea>
                             </div>
                             
-                            <div class="form-group text-right">
+                            <div class="form-actions">
                                 <a href="areas.php" class="btn btn-secondary">Cancelar</a>
-                                <button type="submit" class="btn btn-primary">
-                                    <?php echo $action == 'create' ? 'Crear Área' : 'Actualizar Área'; ?>
-                                </button>
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> <?php echo $action == 'create' ? 'Crear Área' : 'Actualizar Área'; ?></button>
                             </div>
                         </form>
                     </div>
@@ -226,30 +202,9 @@ $unidades = $conn->query("SELECT u.*, g.nombre as gerencia_nombre, e.nombre as e
     <script>
         $(document).ready(function() {
             $('#areasTable').DataTable({
-                language: {
-                    url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json'
-                },
-                columnDefs: [
-                    { orderable: false, targets: [6] }
-                ]
+                language: { url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json' },
+                columnDefs: [ { orderable: false, targets: [6] } ]
             });
-            
-            // Validación de formulario
-            (function() {
-                'use strict';
-                window.addEventListener('load', function() {
-                    var forms = document.getElementsByClassName('needs-validation');
-                    Array.prototype.filter.call(forms, function(form) {
-                        form.addEventListener('submit', function(event) {
-                            if (form.checkValidity() === false) {
-                                event.preventDefault();
-                                event.stopPropagation();
-                            }
-                            form.classList.add('was-validated');
-                        }, false);
-                    });
-                }, false);
-            })();
         });
     </script>
 </body>

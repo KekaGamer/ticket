@@ -25,7 +25,8 @@ class Database {
     }
 }
 
-// Conexión a Active Directory
+/*
+// Conexión a Active Directory (CLASE COMPLETA COMENTADA)
 class ADConnection {
     private $conn;
 
@@ -60,4 +61,5 @@ class ADConnection {
         ldap_close($this->conn);
     }
 }
+*/
 ?>
