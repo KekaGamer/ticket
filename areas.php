@@ -81,9 +81,6 @@ $unidades = $conn->query("SELECT u.*, g.nombre as gerencia_nombre, e.nombre as e
                           JOIN empresas e ON g.id_empresa = e.id
                           WHERE u.estado = 1
                           ORDER BY e.nombre, g.nombre, u.nombre")->fetchAll(PDO::FETCH_ASSOC);
-
-$page_title = "Gestión de Áreas";
-include_once '../includes/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -99,7 +96,7 @@ include_once '../includes/header.php';
     <link rel="stylesheet" href="../assets/css/profesional.css">
 </head>
 <body>
-    <?php include '../includes/header.php'; ?>
+    <?php $show_header = true; include '../includes/header.php'; ?>
     
     <div class="container">
         <?php include 'sidebar.php'; ?>
@@ -154,7 +151,7 @@ include_once '../includes/header.php';
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
-                            </table>
+                        </table>
                     </div>
                 </div>
             <?php elseif ($action == 'create' || $action == 'edit'): ?>

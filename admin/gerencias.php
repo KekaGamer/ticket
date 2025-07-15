@@ -79,6 +79,8 @@ $gerencias = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Obtener empresas para select
 $empresas = $conn->query("SELECT * FROM empresas WHERE estado = 1 ORDER BY nombre")->fetchAll(PDO::FETCH_ASSOC);
+$page_title = "Gestión de Gerencias";
+include_once '../includes/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -120,6 +122,29 @@ $empresas = $conn->query("SELECT * FROM empresas WHERE estado = 1 ORDER BY nombr
                 <div class="card">
                     <div class="card-body">
                         <table id="gerenciasTable" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Empresa</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($gerencias as $ger): ?>
+                                    <tr>
+                                        <td><?php echo $ger['id']; ?></td>
+                                        <td><?php echo htmlspecialchars($ger['nombre']); ?></td>
+                                        <td><?php echo htmlspecialchars($ger['empresa_nombre']); ?></td>
+                                        <td><span class="badge <?php echo $ger['estado'] ? 'badge-success' : 'badge-danger'; ?>"><?php echo $ger['estado'] ? 'Activo' : 'Inactivo'; ?></span></td>
+                                        <td>
+                                            <a href="gerencias.php?action=edit&id=<?php echo $ger['id']; ?>" class="btn btn-sm btn-primary" title="Editar"><i class="fas fa-edit"></i></a>
+                                            <a href="gerencias.php?toggle=1&id=<?php echo $ger['id']; ?>" class="btn btn-sm btn-<?php echo $ger['estado'] ? 'warning' : 'success'; ?>" title="<?php echo $ger['estado'] ? 'Desactivar' : 'Activar'; ?>"><i class="fas fa-<?php echo $ger['estado'] ? 'times' : 'check'; ?>"></i></a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
                             </table>
                     </div>
                 </div>
@@ -170,5 +195,10 @@ $empresas = $conn->query("SELECT * FROM empresas WHERE estado = 1 ORDER BY nombr
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="../assets/js/main.js"></script>
-    </body>
+    <script>
+        $(document).ready(function() {
+            $('#gerenciasTable').DataTable({ language: { url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json' } });
+        });
+    </script>
+</body>
 </html>

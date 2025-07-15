@@ -26,7 +26,9 @@ $estadisticas = $functions->getEstadisticasTickets();
         <?php include 'sidebar.php'; ?>
         
         <main class="main-content">
-            <h1>Dashboard Administrador</h1>
+            <div class="page-header">
+                <h1>Dashboard Administrador</h1>
+            </div>
             
             <div class="dashboard-grid">
                 <!-- Estadísticas rápidas -->

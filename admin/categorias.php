@@ -9,17 +9,18 @@ $conn = $db->getConnection();
 $action = $_GET['action'] ?? 'list';
 $id = $_GET['id'] ?? 0;
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && ($action == 'create' || $action == 'edit')) {
     $parent_id = filter_input(INPUT_POST, 'parent_id', FILTER_SANITIZE_NUMBER_INT);
     $nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_STRING);
     $descripcion = filter_input(INPUT_POST, 'descripcion', FILTER_SANITIZE_STRING);
     $plantilla = $_POST['plantilla'] ?? '';
+    $icono_fa = filter_input(INPUT_POST, 'icono_fa', FILTER_SANITIZE_STRING);
     $parent_id = ($parent_id == 0) ? null : $parent_id;
 
     if ($action == 'create') {
-        $stmt = $conn->prepare("INSERT INTO categorias_tickets (parent_id, nombre, descripcion, plantilla) VALUES (:parent_id, :nombre, :descripcion, :plantilla)");
+        $stmt = $conn->prepare("INSERT INTO categorias_tickets (parent_id, nombre, descripcion, plantilla, icono_fa) VALUES (:parent_id, :nombre, :descripcion, :plantilla, :icono_fa)");
     } elseif ($action == 'edit' && $id > 0) {
-        $stmt = $conn->prepare("UPDATE categorias_tickets SET parent_id = :parent_id, nombre = :nombre, descripcion = :descripcion, plantilla = :plantilla WHERE id = :id");
+        $stmt = $conn->prepare("UPDATE categorias_tickets SET parent_id = :parent_id, nombre = :nombre, descripcion = :descripcion, plantilla = :plantilla, icono_fa = :icono_fa WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     }
     
@@ -28,15 +29,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':descripcion', $descripcion);
         $stmt->bindParam(':plantilla', $plantilla);
+        $stmt->bindParam(':icono_fa', $icono_fa);
         if ($stmt->execute()) {
             $_SESSION['success_message'] = "Categoría guardada correctamente.";
-            header("Location: categorias.php");
-            exit();
         } else {
-            $error = "Error al guardar la categoría.";
+            $_SESSION['error_message'] = "Error al guardar la categoría.";
         }
+        header("Location: categorias.php");
+        exit();
     }
 }
+
+// --- INICIO DE LA LÓGICA DE ELIMINACIÓN AÑADIDA ---
+if ($action == 'delete' && $id > 0) {
+    // Se intenta eliminar la categoría.
+    try {
+        $stmt = $conn->prepare("DELETE FROM categorias_tickets WHERE id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $_SESSION['success_message'] = "Categoría eliminada permanentemente.";
+    } catch (PDOException $e) {
+        // Esto previene un error fatal si la categoría está en uso.
+        $_SESSION['error_message'] = "No se puede eliminar la categoría porque está en uso por tickets existentes o es padre de otras subcategorías.";
+    }
+    header("Location: categorias.php");
+    exit();
+}
+// --- FIN DE LA LÓGICA DE ELIMINACIÓN ---
 
 if (isset($_GET['toggle']) && $id > 0) {
     $stmt = $conn->prepare("UPDATE categorias_tickets SET estado = NOT estado WHERE id = :id");
@@ -75,8 +94,8 @@ include '../includes/header.php';
         <?php if (isset($_SESSION['success_message'])): ?>
             <div class="alert alert-success"><?php echo $_SESSION['success_message']; unset($_SESSION['success_message']); ?></div>
         <?php endif; ?>
-        <?php if (isset($error)): ?>
-            <div class="alert alert-danger"><?php echo $error; ?></div>
+        <?php if (isset($_SESSION['error_message'])): ?>
+            <div class="alert alert-danger"><?php echo $_SESSION['error_message']; unset($_SESSION['error_message']); ?></div>
         <?php endif; ?>
 
         <?php if ($action == 'list'): ?>
@@ -86,6 +105,7 @@ include '../includes/header.php';
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Icono</th>
                                 <th>Nombre</th>
                                 <th>Categoría Padre</th>
                                 <th>Estado</th>
@@ -96,13 +116,20 @@ include '../includes/header.php';
                             <?php foreach ($categorias as $cat): ?>
                                 <tr>
                                     <td><?php echo $cat['id']; ?></td>
+                                    <td><i class="<?php echo htmlspecialchars($cat['icono_fa'] ?? 'fas fa-question-circle'); ?>"></i></td>
                                     <td><?php echo htmlspecialchars($cat['nombre']); ?></td>
                                     <td><?php echo htmlspecialchars($cat['parent_nombre'] ?? '<strong>(Principal)</strong>'); ?></td>
                                     <td><span class="badge <?php echo $cat['estado'] ? 'badge-success' : 'badge-danger'; ?>"><?php echo $cat['estado'] ? 'Activo' : 'Inactivo'; ?></span></td>
                                     <td>
                                         <a href="categorias.php?action=edit&id=<?php echo $cat['id']; ?>" class="btn btn-sm btn-primary" title="Editar"><i class="fas fa-edit"></i></a>
                                         <a href="categorias.php?toggle=1&id=<?php echo $cat['id']; ?>" class="btn btn-sm btn-<?php echo $cat['estado'] ? 'warning' : 'success'; ?>" title="<?php echo $cat['estado'] ? 'Desactivar' : 'Activar'; ?>"><i class="fas fa-<?php echo $cat['estado'] ? 'times' : 'check'; ?>"></i></a>
-                                    </td>
+                                        <a href="categorias.php?action=delete&id=<?php echo $cat['id']; ?>" 
+                                           class="btn btn-sm btn-danger" 
+                                           title="Eliminar Permanentemente"
+                                           onclick="return confirm('¡ADVERTENCIA!\n\n¿Estás seguro de que quieres eliminar esta categoría de forma permanente?\n\nEsta acción no se puede deshacer y puede afectar a tickets antiguos si está en uso.');">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                        </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -128,11 +155,19 @@ include '../includes/header.php';
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             </select>
-                            <small class="form-text text-muted">Para crear "Usuarios AD", primero crea "Aplicativos TI" y luego asigna esta como padre.</small>
+                            <small class="form-text text-muted">Aplica solo para subcategorías.</small>
                         </div>
                         <div class="form-group">
                             <label for="nombre">Nombre de la Categoría/Subcategoría</label>
                             <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo isset($categoria) ? htmlspecialchars($categoria['nombre']) : ''; ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="icono_fa">Icono (Font Awesome)</label>
+                            <input type="text" class="form-control" id="icono_fa" name="icono_fa" value="<?php echo isset($categoria) ? htmlspecialchars($categoria['icono_fa']) : 'fas fa-concierge-bell'; ?>">
+                            <small class="form-text text-muted">
+                                Ej: <code>fas fa-database</code>, <code>fas fa-user-plus</code>. 
+                                <a href="https://fontawesome.com/v5/search?m=free" target="_blank">Busca iconos aquí</a>.
+                            </small>
                         </div>
                         <div class="form-group">
                             <label for="descripcion">Descripción</label>

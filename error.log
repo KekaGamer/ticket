@@ -1,0 +1,458 @@
+[11-Jul-2025 15:58:09 America/Santiago] Error de conexión: SQLSTATE[28000] [1045] Access denied for user 'cma110690_masercom'@'localhost' (using password: YES)
+[11-Jul-2025 15:58:13 America/Santiago] Error de conexión: SQLSTATE[28000] [1045] Access denied for user 'cma110690_masercom'@'localhost' (using password: YES)
+[11-Jul-2025 15:59:15 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined function ldap_connect() in /home6/cma110690/public_html/ticket/includes/db.php:33
+Stack trace:
+#0 /home6/cma110690/public_html/ticket/includes/auth.php(10): ADConnection->__construct()
+#1 /home6/cma110690/public_html/ticket/index.php(4): Auth->__construct()
+#2 {main}
+  thrown in /home6/cma110690/public_html/ticket/includes/db.php on line 33
+[11-Jul-2025 15:59:18 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined function ldap_connect() in /home6/cma110690/public_html/ticket/includes/db.php:33
+Stack trace:
+#0 /home6/cma110690/public_html/ticket/includes/auth.php(10): ADConnection->__construct()
+#1 /home6/cma110690/public_html/ticket/index.php(4): Auth->__construct()
+#2 {main}
+  thrown in /home6/cma110690/public_html/ticket/includes/db.php on line 33
+[11-Jul-2025 15:59:19 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined function ldap_connect() in /home6/cma110690/public_html/ticket/includes/db.php:33
+Stack trace:
+#0 /home6/cma110690/public_html/ticket/includes/auth.php(10): ADConnection->__construct()
+#1 /home6/cma110690/public_html/ticket/index.php(4): Auth->__construct()
+#2 {main}
+  thrown in /home6/cma110690/public_html/ticket/includes/db.php on line 33
+[11-Jul-2025 15:59:20 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined function ldap_connect() in /home6/cma110690/public_html/ticket/includes/db.php:33
+Stack trace:
+#0 /home6/cma110690/public_html/ticket/includes/auth.php(10): ADConnection->__construct()
+#1 /home6/cma110690/public_html/ticket/index.php(4): Auth->__construct()
+#2 {main}
+  thrown in /home6/cma110690/public_html/ticket/includes/db.php on line 33
+[11-Jul-2025 15:59:22 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined function ldap_connect() in /home6/cma110690/public_html/ticket/includes/db.php:33
+Stack trace:
+#0 /home6/cma110690/public_html/ticket/includes/auth.php(10): ADConnection->__construct()
+#1 /home6/cma110690/public_html/ticket/index.php(4): Auth->__construct()
+#2 {main}
+  thrown in /home6/cma110690/public_html/ticket/includes/db.php on line 33
+[11-Jul-2025 15:59:22 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined function ldap_connect() in /home6/cma110690/public_html/ticket/includes/db.php:33
+Stack trace:
+#0 /home6/cma110690/public_html/ticket/includes/auth.php(10): ADConnection->__construct()
+#1 /home6/cma110690/public_html/ticket/index.php(4): Auth->__construct()
+#2 {main}
+  thrown in /home6/cma110690/public_html/ticket/includes/db.php on line 33
+[11-Jul-2025 17:47:40 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getUltimosTickets() in /home6/cma110690/public_html/ticket/admin/index.php:69
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/admin/index.php on line 69
+[11-Jul-2025 17:48:19 America/Santiago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'u.id_empresa' in 'ON' in /home6/cma110690/public_html/ticket/admin/usuarios.php:144
+Stack trace:
+#0 /home6/cma110690/public_html/ticket/admin/usuarios.php(144): PDO->query()
+#1 {main}
+  thrown in /home6/cma110690/public_html/ticket/admin/usuarios.php on line 144
+[11-Jul-2025 17:48:21 America/Santiago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'u.id_empresa' in 'ON' in /home6/cma110690/public_html/ticket/admin/usuarios.php:144
+Stack trace:
+#0 /home6/cma110690/public_html/ticket/admin/usuarios.php(144): PDO->query()
+#1 {main}
+  thrown in /home6/cma110690/public_html/ticket/admin/usuarios.php on line 144
+[11-Jul-2025 17:48:23 America/Santiago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'u.id_empresa' in 'ON' in /home6/cma110690/public_html/ticket/admin/usuarios.php:144
+Stack trace:
+#0 /home6/cma110690/public_html/ticket/admin/usuarios.php(144): PDO->query()
+#1 {main}
+  thrown in /home6/cma110690/public_html/ticket/admin/usuarios.php on line 144
+[11-Jul-2025 18:16:11 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getUltimosTickets() in /home6/cma110690/public_html/ticket/admin/index.php:69
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/admin/index.php on line 69
+[11-Jul-2025 18:17:32 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/empresas.php on line 17
+[11-Jul-2025 18:17:32 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/empresas.php on line 18
+[11-Jul-2025 18:17:32 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/empresas.php on line 19
+[11-Jul-2025 18:17:54 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/gerencias.php on line 16
+[11-Jul-2025 18:17:54 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/gerencias.php on line 17
+[11-Jul-2025 18:18:12 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/gerencias.php on line 16
+[11-Jul-2025 18:18:12 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/gerencias.php on line 17
+[11-Jul-2025 18:18:24 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/gerencias.php on line 16
+[11-Jul-2025 18:18:24 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/gerencias.php on line 17
+[11-Jul-2025 18:18:39 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/gerencias.php on line 16
+[11-Jul-2025 18:18:39 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/gerencias.php on line 17
+[11-Jul-2025 18:18:55 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/unidades.php on line 16
+[11-Jul-2025 18:18:55 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/unidades.php on line 17
+[11-Jul-2025 18:19:06 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/unidades.php on line 16
+[11-Jul-2025 18:19:06 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/unidades.php on line 17
+[11-Jul-2025 18:19:18 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/unidades.php on line 16
+[11-Jul-2025 18:19:18 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/unidades.php on line 17
+[11-Jul-2025 18:19:30 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/unidades.php on line 16
+[11-Jul-2025 18:19:30 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/unidades.php on line 17
+[11-Jul-2025 18:19:49 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/unidades.php on line 16
+[11-Jul-2025 18:19:49 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/unidades.php on line 17
+[11-Jul-2025 18:20:02 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/unidades.php on line 16
+[11-Jul-2025 18:20:02 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/unidades.php on line 17
+[11-Jul-2025 18:20:13 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/unidades.php on line 16
+[11-Jul-2025 18:20:13 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/unidades.php on line 17
+[11-Jul-2025 18:20:29 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 16
+[11-Jul-2025 18:20:29 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 17
+[11-Jul-2025 18:20:35 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 16
+[11-Jul-2025 18:20:35 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 17
+[11-Jul-2025 18:20:50 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 16
+[11-Jul-2025 18:20:50 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 17
+[11-Jul-2025 18:21:03 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 16
+[11-Jul-2025 18:21:03 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 17
+[11-Jul-2025 18:21:12 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 16
+[11-Jul-2025 18:21:12 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 17
+[11-Jul-2025 18:21:37 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 16
+[11-Jul-2025 18:21:37 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 17
+[11-Jul-2025 18:21:51 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 16
+[11-Jul-2025 18:21:51 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 17
+[11-Jul-2025 18:22:07 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 16
+[11-Jul-2025 18:22:07 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 17
+[11-Jul-2025 18:22:19 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 16
+[11-Jul-2025 18:22:19 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/areas.php on line 17
+[11-Jul-2025 18:22:59 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/usuarios.php on line 17
+[11-Jul-2025 18:22:59 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/usuarios.php on line 18
+[11-Jul-2025 18:22:59 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/usuarios.php on line 20
+[11-Jul-2025 18:23:23 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getUltimosTickets() in /home6/cma110690/public_html/ticket/admin/index.php:69
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/admin/index.php on line 69
+[11-Jul-2025 18:23:47 America/Santiago] PHP Warning:  include(sidebar.php): Failed to open stream: No such file or directory in /home6/cma110690/public_html/ticket/tecnico/index.php on line 26
+[11-Jul-2025 18:23:47 America/Santiago] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php84/usr/share/pear:/opt/alt/php84/usr/share/php:/usr/share/pear:/usr/share/php') in /home6/cma110690/public_html/ticket/tecnico/index.php on line 26
+[11-Jul-2025 18:23:47 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsAsignados() in /home6/cma110690/public_html/ticket/tecnico/index.php:69
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/tecnico/index.php on line 69
+[11-Jul-2025 18:24:10 America/Santiago] PHP Warning:  include(sidebar.php): Failed to open stream: No such file or directory in /home6/cma110690/public_html/ticket/tecnico/index.php on line 26
+[11-Jul-2025 18:24:10 America/Santiago] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php84/usr/share/pear:/opt/alt/php84/usr/share/php:/usr/share/pear:/usr/share/php') in /home6/cma110690/public_html/ticket/tecnico/index.php on line 26
+[11-Jul-2025 18:24:10 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsAsignados() in /home6/cma110690/public_html/ticket/tecnico/index.php:69
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/tecnico/index.php on line 69
+[11-Jul-2025 18:24:11 America/Santiago] PHP Warning:  include(sidebar.php): Failed to open stream: No such file or directory in /home6/cma110690/public_html/ticket/tecnico/index.php on line 26
+[11-Jul-2025 18:24:11 America/Santiago] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php84/usr/share/pear:/opt/alt/php84/usr/share/php:/usr/share/pear:/usr/share/php') in /home6/cma110690/public_html/ticket/tecnico/index.php on line 26
+[11-Jul-2025 18:24:11 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsAsignados() in /home6/cma110690/public_html/ticket/tecnico/index.php:69
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/tecnico/index.php on line 69
+[11-Jul-2025 18:57:50 America/Santiago] PHP Warning:  include(sidebar.php): Failed to open stream: No such file or directory in /home6/cma110690/public_html/ticket/tecnico/index.php on line 26
+[11-Jul-2025 18:57:50 America/Santiago] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php84/usr/share/pear:/opt/alt/php84/usr/share/php:/usr/share/pear:/usr/share/php') in /home6/cma110690/public_html/ticket/tecnico/index.php on line 26
+[11-Jul-2025 18:57:50 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsAsignados() in /home6/cma110690/public_html/ticket/tecnico/index.php:69
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/tecnico/index.php on line 69
+[11-Jul-2025 18:58:03 America/Santiago] PHP Warning:  include(sidebar.php): Failed to open stream: No such file or directory in /home6/cma110690/public_html/ticket/tecnico/perfil.php on line 117
+[11-Jul-2025 18:58:03 America/Santiago] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php84/usr/share/pear:/opt/alt/php84/usr/share/php:/usr/share/pear:/usr/share/php') in /home6/cma110690/public_html/ticket/tecnico/perfil.php on line 117
+[11-Jul-2025 18:58:14 America/Santiago] PHP Warning:  include(sidebar.php): Failed to open stream: No such file or directory in /home6/cma110690/public_html/ticket/tecnico/perfil.php on line 117
+[11-Jul-2025 18:58:14 America/Santiago] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php84/usr/share/pear:/opt/alt/php84/usr/share/php:/usr/share/pear:/usr/share/php') in /home6/cma110690/public_html/ticket/tecnico/perfil.php on line 117
+[11-Jul-2025 18:58:17 America/Santiago] PHP Warning:  include(sidebar.php): Failed to open stream: No such file or directory in /home6/cma110690/public_html/ticket/tecnico/index.php on line 26
+[11-Jul-2025 18:58:17 America/Santiago] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php84/usr/share/pear:/opt/alt/php84/usr/share/php:/usr/share/pear:/usr/share/php') in /home6/cma110690/public_html/ticket/tecnico/index.php on line 26
+[11-Jul-2025 18:58:17 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsAsignados() in /home6/cma110690/public_html/ticket/tecnico/index.php:69
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/tecnico/index.php on line 69
+[11-Jul-2025 18:58:53 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getUltimosTickets() in /home6/cma110690/public_html/ticket/admin/index.php:69
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/admin/index.php on line 69
+[11-Jul-2025 19:40:45 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getUltimosTickets() in /home6/cma110690/public_html/ticket/admin/index.php:69
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/admin/index.php on line 69
+[11-Jul-2025 19:41:35 America/Santiago] PHP Warning:  include(../includes/header_meta.php): Failed to open stream: No such file or directory in /home6/cma110690/public_html/ticket/admin/categorias.php on line 64
+[11-Jul-2025 19:41:35 America/Santiago] PHP Warning:  include(): Failed opening '../includes/header_meta.php' for inclusion (include_path='.:/opt/alt/php84/usr/share/pear:/opt/alt/php84/usr/share/php:/usr/share/pear:/usr/share/php') in /home6/cma110690/public_html/ticket/admin/categorias.php on line 64
+[11-Jul-2025 19:41:46 America/Santiago] PHP Warning:  include(../includes/header_meta.php): Failed to open stream: No such file or directory in /home6/cma110690/public_html/ticket/admin/categorias.php on line 64
+[11-Jul-2025 19:41:46 America/Santiago] PHP Warning:  include(): Failed opening '../includes/header_meta.php' for inclusion (include_path='.:/opt/alt/php84/usr/share/pear:/opt/alt/php84/usr/share/php:/usr/share/pear:/usr/share/php') in /home6/cma110690/public_html/ticket/admin/categorias.php on line 64
+[13-Jul-2025 15:40:40 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getEstadisticasTickets() in /home6/cma110690/public_html/ticket/admin/index.php:9
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/admin/index.php on line 9
+[13-Jul-2025 16:15:03 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 16:27:14 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 17:22:15 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 17:22:22 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 18:00:10 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 18:00:23 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 18:19:03 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 18:19:20 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 18:23:05 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 18:23:11 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 18:23:20 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 18:26:28 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 18:31:02 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 18:56:25 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 19:04:43 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 19:05:26 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 19:05:55 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 19:09:58 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 19:16:35 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 19:22:12 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/perfil.php on line 27
+[13-Jul-2025 19:22:12 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/perfil.php on line 28
+[13-Jul-2025 19:24:37 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 19:26:25 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 20:08:44 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 20:08:44 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 21:12:58 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 21:12:58 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 21:12:58 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 21:14:33 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 21:14:33 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 21:14:33 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 21:33:56 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/usuarios.php on line 18
+[13-Jul-2025 21:33:56 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/usuarios.php on line 19
+[13-Jul-2025 21:33:56 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/usuarios.php on line 21
+[13-Jul-2025 21:34:11 America/Santiago] PHP Warning:  include(sidebar.php): Failed to open stream: No such file or directory in /home6/cma110690/public_html/ticket/cliente/index.php on line 26
+[13-Jul-2025 21:34:11 America/Santiago] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php84/usr/share/pear:/opt/alt/php84/usr/share/php:/usr/share/pear:/usr/share/php') in /home6/cma110690/public_html/ticket/cliente/index.php on line 26
+[13-Jul-2025 21:34:11 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsCliente() in /home6/cma110690/public_html/ticket/cliente/index.php:69
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/cliente/index.php on line 69
+[13-Jul-2025 21:34:16 America/Santiago] PHP Warning:  include(sidebar.php): Failed to open stream: No such file or directory in /home6/cma110690/public_html/ticket/cliente/perfil.php on line 117
+[13-Jul-2025 21:34:16 America/Santiago] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php84/usr/share/pear:/opt/alt/php84/usr/share/php:/usr/share/pear:/usr/share/php') in /home6/cma110690/public_html/ticket/cliente/perfil.php on line 117
+[13-Jul-2025 21:34:25 America/Santiago] PHP Warning:  include(sidebar.php): Failed to open stream: No such file or directory in /home6/cma110690/public_html/ticket/cliente/index.php on line 26
+[13-Jul-2025 21:34:25 America/Santiago] PHP Warning:  include(): Failed opening 'sidebar.php' for inclusion (include_path='.:/opt/alt/php84/usr/share/pear:/opt/alt/php84/usr/share/php:/usr/share/pear:/usr/share/php') in /home6/cma110690/public_html/ticket/cliente/index.php on line 26
+[13-Jul-2025 21:34:25 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsCliente() in /home6/cma110690/public_html/ticket/cliente/index.php:69
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/cliente/index.php on line 69
+[13-Jul-2025 21:46:14 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsCliente() in /home6/cma110690/public_html/ticket/cliente/index.php:65
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/cliente/index.php on line 65
+[13-Jul-2025 21:49:31 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 21:49:50 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsAsignados() in /home6/cma110690/public_html/ticket/tecnico/index.php:69
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/tecnico/index.php on line 69
+[13-Jul-2025 21:55:27 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsCliente() in /home6/cma110690/public_html/ticket/cliente/index.php:65
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/cliente/index.php on line 65
+[13-Jul-2025 22:34:12 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 22:40:37 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 22:40:37 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 22:40:37 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 22:41:17 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 22:41:17 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 22:41:17 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 22:41:50 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 22:41:50 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 22:41:50 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 22:42:07 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 22:42:07 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 22:42:07 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 22:42:46 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 22:42:46 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 22:42:46 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 22:44:39 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 22:44:39 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 22:44:39 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 22:55:15 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 22:55:15 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 22:55:15 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 22:56:51 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 22:56:51 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 22:56:51 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 22:58:41 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 22:58:41 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 22:58:41 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 22:59:22 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 22:59:22 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 22:59:22 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 22:59:33 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsCliente() in /home6/cma110690/public_html/ticket/cliente/index.php:65
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/cliente/index.php on line 65
+[13-Jul-2025 23:00:19 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 23:01:46 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:01:46 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:01:46 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:02:14 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:02:14 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:02:14 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:02:40 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:02:40 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:02:40 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:03:12 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:03:12 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:03:12 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:03:38 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:03:38 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:03:38 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:18:01 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:18:01 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:18:01 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:18:37 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:18:37 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:18:37 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:19:04 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:19:04 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:19:04 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:19:19 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:19:19 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:19:19 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:19:37 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:19:37 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:19:37 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:20:03 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:20:03 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:20:03 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:20:20 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:20:20 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:20:20 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:20:42 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:20:42 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:20:42 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:21:02 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:21:02 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:21:02 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:21:25 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:21:25 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:21:25 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:21:42 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:21:42 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:21:42 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:22:00 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:22:00 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:22:00 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:22:34 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:22:34 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:22:34 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:22:56 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:22:56 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:22:56 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:23:16 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:23:16 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:23:16 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:23:35 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:23:35 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:23:35 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:24:01 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:24:01 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:24:01 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:24:18 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:24:18 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:24:18 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:24:34 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:24:34 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:24:34 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:24:57 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:24:57 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:24:57 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:25:18 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:25:18 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:25:18 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:25:39 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:25:39 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:25:39 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:26:09 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:26:09 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:26:09 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:26:25 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:26:25 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:26:25 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:26:48 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:26:48 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:26:48 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:27:03 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:27:03 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:27:03 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:27:18 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:27:18 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:27:18 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:27:33 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:27:33 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:27:33 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:27:52 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:27:52 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:27:52 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:28:09 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:28:09 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:28:09 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:28:25 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:28:25 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:28:25 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:28:38 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:28:38 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:28:38 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:28:54 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:28:54 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:28:54 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:29:02 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsCliente() in /home6/cma110690/public_html/ticket/cliente/index.php:65
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/cliente/index.php on line 65
+[13-Jul-2025 23:31:16 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsCliente() in /home6/cma110690/public_html/ticket/cliente/index.php:65
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/cliente/index.php on line 65
+[13-Jul-2025 23:36:30 America/Santiago] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'asunto' in 'SELECT'
+[13-Jul-2025 23:38:29 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:38:29 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:38:29 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:39:54 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:39:54 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:39:54 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:40:27 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:40:27 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:40:27 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:41:57 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:41:57 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:41:57 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:42:45 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:42:45 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:42:45 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:43:13 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:43:13 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:43:13 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:44:09 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:44:09 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:44:09 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:54:29 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 14
+[13-Jul-2025 23:54:29 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 15
+[13-Jul-2025 23:54:29 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/admin/categorias.php on line 17
+[13-Jul-2025 23:56:23 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsCliente() in /home6/cma110690/public_html/ticket/cliente/index.php:65
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/cliente/index.php on line 65
+[13-Jul-2025 23:56:24 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsCliente() in /home6/cma110690/public_html/ticket/cliente/index.php:65
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/cliente/index.php on line 65
+[13-Jul-2025 23:58:44 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 19
+[13-Jul-2025 23:58:44 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 21
+[13-Jul-2025 23:58:44 America/Santiago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cliente_id' in 'INSERT INTO' in /home6/cma110690/public_html/ticket/includes/functions.php:49
+Stack trace:
+#0 /home6/cma110690/public_html/ticket/includes/functions.php(49): PDOStatement->execute()
+#1 /home6/cma110690/public_html/ticket/cliente/solicitud.php(36): Functions->crearTicket()
+#2 {main}
+  thrown in /home6/cma110690/public_html/ticket/includes/functions.php on line 49
+[14-Jul-2025 00:07:10 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 19
+[14-Jul-2025 00:07:10 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 21
+[14-Jul-2025 00:07:10 America/Santiago] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cliente_id' in 'INSERT INTO' in /home6/cma110690/public_html/ticket/includes/functions.php:54
+Stack trace:
+#0 /home6/cma110690/public_html/ticket/includes/functions.php(54): PDOStatement->execute()
+#1 /home6/cma110690/public_html/ticket/cliente/solicitud.php(36): Functions->crearTicket()
+#2 {main}
+  thrown in /home6/cma110690/public_html/ticket/includes/functions.php on line 54
+[14-Jul-2025 10:16:07 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsCliente() in /home6/cma110690/public_html/ticket/cliente/index.php:65
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/cliente/index.php on line 65
+[14-Jul-2025 10:16:52 America/Santiago] PHP Fatal error:  Uncaught Error: Call to undefined method Functions::getTicketsCliente() in /home6/cma110690/public_html/ticket/cliente/index.php:65
+Stack trace:
+#0 {main}
+  thrown in /home6/cma110690/public_html/ticket/cliente/index.php on line 65
+[14-Jul-2025 10:45:24 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 19
+[14-Jul-2025 10:45:24 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 21
+[14-Jul-2025 10:45:24 America/Santiago] Error de BD al crear ticket: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cliente_id' in 'INSERT INTO'
+[14-Jul-2025 10:45:44 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 19
+[14-Jul-2025 10:45:44 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 21
+[14-Jul-2025 10:45:44 America/Santiago] Error de BD al crear ticket: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cliente_id' in 'INSERT INTO'
+[14-Jul-2025 10:49:09 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 19
+[14-Jul-2025 10:49:09 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 21
+[14-Jul-2025 10:49:09 America/Santiago] Error de BD al crear ticket: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_empresa' cannot be null
+[14-Jul-2025 11:08:32 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 19
+[14-Jul-2025 11:08:32 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 21
+[14-Jul-2025 11:08:32 America/Santiago] Error de Base de Datos al crear ticket: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_empresa' cannot be null
+[14-Jul-2025 11:09:15 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 19
+[14-Jul-2025 11:09:15 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 21
+[14-Jul-2025 11:09:15 America/Santiago] Error de Base de Datos al crear ticket: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'id_empresa' cannot be null
+[14-Jul-2025 11:16:11 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 19
+[14-Jul-2025 11:16:11 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 21
+[14-Jul-2025 11:16:40 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 19
+[14-Jul-2025 11:16:40 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 21
+[14-Jul-2025 16:05:45 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 19
+[14-Jul-2025 16:05:45 America/Santiago] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in /home6/cma110690/public_html/ticket/cliente/solicitud.php on line 21

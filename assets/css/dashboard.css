@@ -1,5 +1,14 @@
 /* Estilos específicos para los dashboards */
 
+/* * === INICIO DE LA CORRECCIÓN ===
+ * Esta regla añade un margen superior a la grilla del dashboard,
+ * empujándola hacia abajo para que no quede oculta detrás de la barra de navegación.
+*/
+.dashboard-grid {
+    margin-top: 2rem; /* Aumentamos el margen para dar espacio suficiente */
+}
+
+
 /* Grid del dashboard */
 .dashboard-grid {
     display: grid;
@@ -205,6 +214,14 @@
 .badge-dark {
     background-color: var(--dark-color);
     color: white;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    border-bottom: 1px solid #e9ecef;
 }
 
 /* Responsive */

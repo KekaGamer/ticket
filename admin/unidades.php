@@ -79,6 +79,9 @@ $gerencias = $conn->query("SELECT g.*, e.nombre as empresa_nombre
                            JOIN empresas e ON g.id_empresa = e.id
                            WHERE g.estado = 1
                            ORDER BY e.nombre, g.nombre")->fetchAll(PDO::FETCH_ASSOC);
+
+$page_title = "Gestión de Unidades";
+include_once '../includes/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -94,7 +97,7 @@ $gerencias = $conn->query("SELECT g.*, e.nombre as empresa_nombre
     <link rel="stylesheet" href="../assets/css/profesional.css">
 </head>
 <body>
-    <?php $show_header = true; include '../includes/header.php'; ?>
+    <?php include '../includes/header.php'; ?>
     
     <div class="container">
         <?php include 'sidebar.php'; ?>
@@ -147,7 +150,7 @@ $gerencias = $conn->query("SELECT g.*, e.nombre as empresa_nombre
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
-                        </table>
+                           </table>
                     </div>
                 </div>
             <?php elseif ($action == 'create' || $action == 'edit'): ?>

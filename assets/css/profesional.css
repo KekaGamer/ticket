@@ -1,37 +1,382 @@
-/* assets/css/profesional.css */
+/* Estilos base */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --success-color: #2ecc71;
+    --danger-color: #e74c3c;
+    --warning-color: #f39c12;
+    --info-color: #1abc9c;
+    --light-color: #ecf0f1;
+    --dark-color: #34495e;
+    --white: #ffffff;
+    --gray-light: #bdc3c7;
+    --gray: #95a5a6;
+    --gray-dark: #7f8c8d;
+}
 
-/* --- AJUSTES GENERALES Y ESPACIADO --- */
-.form-group {
-    margin-bottom: 1.25rem;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.card {
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f6fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+/* Layout */
+.container {
+    display: flex;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 250px; /* Espacio para la barra lateral */
+    width: calc(100% - 250px);
+}
+
+/* Login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--secondary-color);
+    background-image: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+}
+
+.login-box {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.login-header .logo {
+    max-width: 150px;
+    margin-bottom: 15px;
+}
+
+.login-header h1 {
+    font-size: 24px;
+    color: var(--secondary-color);
+}
+
+.login-form .form-group {
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+.login-form .form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--gray-light);
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.login-form .form-control:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.login-form .form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login-form .form-check-input {
+    margin-right: 10px;
+}
+
+.login-form .form-check-label {
+    margin-bottom: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
     border: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    margin-bottom: 2rem;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
 }
-.card-header {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #dee2e6;
-    padding: 1rem 1.25rem;
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.alert {
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--gray);
+}
+
+.login-footer a {
+    color: var(--primary-color);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    padding-top: 60px;
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name {
+    font-weight: 500;
+    margin-bottom: 3px;
+}
+
+.user-role {
+    font-size: 12px;
+    color: var(--gray-light);
+    opacity: 0.8;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-nav li {
+    margin: 5px 0;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: var(--gray-light);
+    transition: all 0.3s;
+}
+
+.sidebar-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+}
+
+.sidebar-nav a i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.sidebar-nav .active a {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.sidebar-nav .divider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin: 15px 0;
+}
+
+/* Header */
+.main-header {
+    background-color: var(--white);
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1010;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-toggle {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: var(--secondary-color);
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.notifications {
+    position: relative;
+    margin-right: 25px;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.notifications .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--danger-color);
+    color: var(--white);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.user-photo {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.user-name {
+    margin-right: 5px;
     font-weight: 500;
 }
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--white);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 10px 0;
+    min-width: 180px;
+    display: none;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 8px 15px;
+    color: var(--secondary-color);
+    transition: all 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f8f9fa;
+    color: var(--primary-color);
+}
+
+.dropdown-menu i {
+    margin-right: 8px;
+    width: 18px;
+    text-align: center;
+}
+
+.user-menu:hover .dropdown-menu {
+    display: block;
+}
+
 .page-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
+    margin-top: 25px;
     border-bottom: 1px solid #e9ecef;
 }
-.page-header h1 {
-    margin: 0;
-}
-.page-header .actions {
-    display: flex;
-    gap: 0.5rem;
-}
 
-/* --- ESTILOS PARA FILTROS --- */
+/* --- ESTILOS PARA FILTROS (VISTA MEJORADA) --- */
 .filters {
     padding: 1rem 1.25rem;
     background-color: #f8f9fa;
@@ -40,91 +385,342 @@
 .filters .form-inline {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
+    align-items: flex-end; /* Alinea los elementos en la parte inferior */
+    gap: 1.5rem; /* Espacio entre cada filtro */
 }
 .filters .form-group {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    flex-direction: column; /* Pone la etiqueta encima del campo */
+    gap: 0.25rem; /* Espacio entre la etiqueta y el campo */
     margin-bottom: 0;
 }
 .filters label {
     margin-bottom: 0;
     font-weight: 500;
+    font-size: 0.85em; /* Hace la etiqueta un poco más pequeña */
     color: #495057;
 }
 .filters .form-control {
-    min-width: 180px;
+    min-width: 200px;
+}
+.filters .btn {
+    /* Mueve el botón de filtrar un poco hacia arriba para que se alinee con los campos */
+    margin-bottom: 0; 
 }
 
-/* --- MEJORAS PARA TABLAS (DATATABLES) --- */
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-    padding: 0.4em 0.8em;
-    margin: 0 2px;
-    border-radius: 4px;
-    transition: all 0.2s ease-in-out;
-}
-.dataTables_wrapper .dataTables_paginate .paginate_button.current,
-.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-    background: var(--primary-color) !important;
-    color: white !important;
-    border-color: var(--primary-color) !important;
-}
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-    background: #e9ecef !important;
-    border-color: #dee2e6 !important;
-    color: var(--secondary-color) !important;
-}
-.dataTables_wrapper .dataTables_length select,
-.dataTables_wrapper .dataTables_filter input {
-    border-radius: 4px;
-    padding: 0.4rem 0.6rem;
-    border: 1px solid #ced4da;
-}
-table.dataTable td, table.dataTable th {
-    padding: 12px 15px;
-    vertical-align: middle !important;
-}
-.user-avatar-sm {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    margin-right: 12px;
-    object-fit: cover;
-    vertical-align: middle;
-}
-table.dataTable td .btn {
-    margin: 0 2px;
+/* --- ESTILOS PARA EL CATÁLOGO DE SERVICIOS --- */
+.service-catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
 }
 
-/* --- ESTILOS PROFESIONALES PARA FORMULARIOS --- */
-.form-control, .custom-select {
-    border-radius: 0.3rem;
-    border: 1px solid #ced4da;
-    padding: 0.6rem 0.75rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+.service-card {
+    background-color: var(--white);
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.form-control:focus {
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-card-icon {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    background-color: #f8f9fa;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.service-card-body {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.service-card-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.service-card-description {
+    font-size: 0.9rem;
+    color: var(--gray-dark);
+    line-height: 1.5;
+}
+
+.service-card-footer {
+    padding: 1rem 1.5rem;
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    text-align: right;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+}
+
+/* --- INICIO DE LA SECCIÓN CORREGIDA --- */
+/* --- ESTILOS PARA FORMULARIO DINÁMICO DE SOLICITUDES (VISTA VERTICAL) --- */
+
+#form-fields-wrapper h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.dynamic-form-grid {
+    display: grid;
+    /* Se cambia a una sola columna para un diseño vertical y ordenado */
+    grid-template-columns: 1fr; 
+    gap: 1.25rem; /* Espacio uniforme entre los campos */
+}
+
+/* Esta regla ya no es necesaria para el layout, pero no afecta negativamente */
+.dynamic-form-grid .form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.dynamic-form-grid .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.dynamic-form-grid .form-group label {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.dynamic-form-grid .form-control {
+    background-color: #fdfdff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 0.75rem;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+    transition: border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+
+.dynamic-form-grid .form-control:focus {
+    background-color: var(--white);
     border-color: var(--primary-color);
     box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
 }
-.form-group label {
-    font-weight: 500;
+
+.dynamic-form-grid .form-check {
+    padding: 0.75rem 1rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    border: 1px solid #e9ecef;
+    transition: border-color 0.2s, background-color 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.dynamic-form-grid .form-check:hover {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+}
+
+.dynamic-form-grid .form-check-input {
+    width: 1.25em;
+    height: 1.25em;
+    margin-top: 0;
+}
+
+.dynamic-form-grid .form-check-label {
+    margin-left: 0.75rem;
+    padding-top: 2px;
+}
+
+.dynamic-form-grid h5.form-separator {
+    grid-column: 1 / -1;
+    font-size: 1rem;
+    color: var(--white);
+    background-color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-top: 1.5rem;
     margin-bottom: 0.5rem;
 }
-.card-header h2 {
-    font-size: 1.2rem;
-    margin: 0;
+/* --- FIN DE LA SECCIÓN CORREGIDA --- */
+
+@media (max-width: 768px) {
+    .dynamic-form-grid {
+        grid-template-columns: 1fr; /* Una sola columna */
+    }
 }
-.form-actions {
+/* --- INICIO DE LA CORRECCIÓN: Limitar ancho del formulario de solicitud --- */
+
+/* Le damos un ancho máximo al formulario que contiene los campos dinámicos 
+  para mejorar la legibilidad en pantallas grandes.
+*/
+#dynamicTicketForm {
+    max-width: 800px;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* --- FIN DE LA CORRECCIÓN --- */
+
+* --- ESTILOS PARA VISTA DE TICKET PROFESIONAL (V5.0 FINAL) --- */
+
+.ticket-view-header {
+    margin-bottom: 1.5rem;
+}
+.ticket-title-section {
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+}
+.ticket-id-badge {
+    background: var(--secondary-color); color: var(--white);
+    padding: 0.4rem 0.8rem; border-radius: 5px; font-size: 0.9rem; font-weight: 700;
+}
+.ticket-view-header h2 {
+    margin: 0; font-size: 2rem; font-weight: 500; color: var(--secondary-color);
+}
+
+.ticket-summary-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background-color: #dee2e6;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.summary-item {
+    background-color: var(--white);
+    padding: 1rem;
+}
+.summary-label {
+    display: block; font-size: 0.8rem; font-weight: 500;
+    color: var(--gray-dark); margin-bottom: 0.25rem; text-transform: uppercase;
+}
+.summary-label .fas { margin-right: 0.5rem; }
+.summary-value {
+    font-size: 1rem; font-weight: 500; color: var(--secondary-color);
+}
+
+.badge { font-size: 0.8rem; padding: 0.5em 1em; border-radius: 20px; border: 1px solid transparent; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500; }
+.badge.status-abierto, .badge.status-reabierto { background-color: #eaf5ff; color: #2980b9; border-color: #a9d6ff;}
+.badge.status-pendiente { background-color: #fff8e1; color: #f39c12; border-color: #ffeeba;}
+.badge.status-cerrado { background-color: #eafaf1; color: #27ae60; border-color: #a3e9c3;}
+.badge.priority-baja { color: #555; background-color: #f1f1f1; border-color: #ddd;}
+.badge.priority-media { background-color: #fef3e5; color: #f39c12; border-color: #fbe2c3;}
+.badge.priority-alta, .badge.priority-urgente { background-color: #fbe9e7; color: #e74c3c; border-color: #f6c8c4;}
+
+.ticket-view-grid { display: grid; grid-template-columns: 1fr 280px; gap: 2rem; } /* <-- MODIFICACIÓN APLICADA AQUÍ */
+.ticket-card { border: none; border-radius: 8px; background-color: var(--white); box-shadow: 0 4px 15px rgba(0,0,0,0.06); margin-bottom: 1.5rem; }
+.ticket-card .card-header { background-color: var(--white); font-size: 1.1rem; font-weight: 500; border-bottom: 1px solid #f1f1f1; }
+.ticket-card .card-header h3, .ticket-card .card-header h4 { font-size: 1.25rem; font-weight: 500; color: var(--secondary-color); display: flex; align-items: center; gap: 0.75rem; }
+
+.response { border: 1px solid #e9ecef; border-radius: 8px; }
+.response + .response { margin-top: 1.5rem; }
+.response-header { padding: 0.75rem 1.25rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem; border-bottom: 1px solid #e9ecef; background-color: #f8f9fa; }
+.response-client { border-left: 4px solid var(--success-color); }
+.response-technician { border-left: 4px solid var(--primary-color); }
+.response-header strong { color: var(--secondary-color); }
+.response-body { padding: 1.25rem; }
+
+/* --- ESTILOS MEJORADOS PARA LA VISTA DE DETALLES --- */
+.initial-ticket-details {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e9ecef;
+}
+.initial-ticket-details p { margin: 0; color: var(--gray-dark); }
+.ticket-description-details { display: flex; flex-direction: column; gap: 1.25rem; }
+.detail-block { padding-top: 1.25rem; border-top: 1px solid #f1f1f1; }
+.detail-block:first-child { border-top: none; padding-top: 0; }
+.detail-block-header { margin: 0 0 0.5rem 0; font-size: 0.8rem; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: 0.5px;}
+.detail-block-content { margin: 0; color: #333; font-size: 1.05em; padding-left: 1rem; border-left: 3px solid #e9ecef; }
+.detail-block.is-separator { display: none; }
+.text-success { color: var(--success-color) !important; }
+
+/* --- ESTILOS MEJORADOS PARA EL FORMULARIO DE RESPUESTA --- */
+.response-form textarea { 
+    min-height: 180px; 
+    font-size: 1.1em; 
+    resize: none; /* <-- AÑADE ESTA LÍNEA */
+}
+.form-actions { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1rem;}
+.file-upload-wrapper { display: flex; align-items: center; }
+.file-upload-label { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background-color: #e9ecef; border: 1px solid #ced4da; border-radius: 5px; cursor: pointer; transition: all 0.2s; font-weight: 500; }
+.file-upload-label:hover { background-color: #dee2e6; }
+input[type="file"] { display: none; }
+.file-name-display { font-style: italic; color: var(--gray-dark); }
+
+.ticket-sidebar .card-body { padding: 0.5rem; }
+.ticket-details .detail-row { display: flex; flex-direction: column; align-items: flex-start; padding: 1rem; border-bottom: 1px solid #f1f1f1; }
+.ticket-details .detail-row:last-child { border-bottom: none; }
+.ticket-details .detail-label { font-weight: 700; font-size: 0.8rem; color: #999; text-transform: uppercase; margin-bottom: 0.25rem; }
+.ticket-details .detail-value { color: var(--secondary-color); text-align: left; font-weight: 500; }
+
+@media (max-width: 992px) { .ticket-view-grid { grid-template-columns: 1fr; } }
+
+/* =================================================================== */
+/* SOLUCIÓN PARA EXPANDIR EL TEXTAREA EN EL FORMULARIO DE RESPUESTA */
+/* =================================================================== */
+
+/* 1. Seleccionamos el 'card-body' que contiene el formulario de respuesta */
+.ticket-card .card-body:has(form[action*="respond"]) {
+    display: flex; /* Lo convertimos en un contenedor flexible */
+    flex-direction: column; /* Apilamos sus hijos verticalmente */
+    height: 100%;
+}
+
+/* 2. Hacemos que el formulario ocupe todo el espacio de la tarjeta */
+.ticket-card .card-body form[action*="respond"] {
     display: flex;
-    justify-content: flex-end;
-    gap: 0.75rem;
-    padding-top: 1rem;
-    border-top: 1px solid #e9ecef;
-    margin-top: 1.5rem;
+    flex-direction: column;
+    flex-grow: 1; /* Le decimos que crezca para ocupar el espacio vertical disponible */
 }
-.custom-file-input { cursor: pointer; }
-.custom-file-label { padding: 0.6rem 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.custom-file-label::after { padding: 0.6rem 0.75rem; height: 100%; content: "Examinar"; }
+
+/* 3. Hacemos que el contenedor del textarea también crezca */
+.ticket-card form[action*="respond"] .form-group {
+    flex-grow: 1;
+    display: flex;
+}
+
+/* 4. Finalmente, nos aseguramos que el textarea llene su contenedor */
+.ticket-card form[action*="respond"] .form-group textarea.form-control {
+    width: 100%;   /* Ocupa todo el ancho */
+    height: 100%;  /* Ocupa todo el alto */
+    min-height: 150px; /* Le damos una altura mínima para que no sea demasiado pequeño */
+    resize: none;  /* Mantenemos el resize desactivado */
+}
+
+/* 5. Mantenemos los botones de acción al final */
+.ticket-card form[action*="respond"] .form-actions {
+    flex-shrink: 0; /* Evitamos que la sección de botones se encoja */
+}

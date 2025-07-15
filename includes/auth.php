@@ -1,21 +1,20 @@
 <?php
 require_once 'db.php';
+require_once 'config.php'; // Se añade para tener acceso a BASE_URL
 
 class Auth {
     private $db;
-    // private $ad; // Comentado para deshabilitar AD
 
     public function __construct() {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $this->db = new Database();
-        // $this->ad = new ADConnection(); // Comentado para deshabilitar AD
     }
 
     public function login($email, $password, $useAD = false) {
-        // La lógica de Active Directory ha sido removida.
-        // Solo se utiliza la autenticación local.
-        
         $conn = $this->db->getConnection();
-        $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = :email");
+        $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = :email AND estado = 1");
         $stmt->bindParam(':email', $email);
         $stmt->execute();
         
@@ -27,7 +26,6 @@ class Auth {
                 $_SESSION['user_role'] = $user['rol'];
                 $_SESSION['user_name'] = $user['nombre'] . ' ' . $user['apellido'];
                 
-                // Actualizar último login
                 $this->updateLastLogin($user['id']);
                 return true;
             }
@@ -50,9 +48,12 @@ class Auth {
         return $_SESSION['user_role'] ?? null;
     }
 
+    // --- SECCIÓN DE REDIRECCIONES CORREGIDA ---
+
     public function redirectIfNotLoggedIn() {
         if (!$this->isLoggedIn()) {
-            header("Location: ../login.php");
+            // Usa la URL absoluta para evitar errores
+            header("Location: " . BASE_URL . "login.php");
             exit();
         }
     }
@@ -60,7 +61,7 @@ class Auth {
     public function redirectIfNotAdmin() {
         $this->redirectIfNotLoggedIn();
         if ($this->getUserRole() != 'admin') {
-            header("Location: ../index.php");
+            header("Location: " . BASE_URL . "index.php");
             exit();
         }
     }
@@ -68,7 +69,7 @@ class Auth {
     public function redirectIfNotTecnico() {
         $this->redirectIfNotLoggedIn();
         if ($this->getUserRole() != 'tecnico') {
-            header("Location: ../index.php");
+            header("Location: " . BASE_URL . "index.php");
             exit();
         }
     }
@@ -76,7 +77,7 @@ class Auth {
     public function redirectIfNotCliente() {
         $this->redirectIfNotLoggedIn();
         if ($this->getUserRole() != 'cliente') {
-            header("Location: ../index.php");
+            header("Location: " . BASE_URL . "index.php");
             exit();
         }
     }
@@ -84,7 +85,9 @@ class Auth {
     public function logout() {
         session_unset();
         session_destroy();
-        header("Location: ../login.php");
+        // --- LÍNEA CORREGIDA ---
+        // Se utiliza BASE_URL para una redirección absoluta y sin errores 404.
+        header("Location: " . BASE_URL . "login.php");
         exit();
     }
 }

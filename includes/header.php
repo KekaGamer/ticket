@@ -19,7 +19,6 @@ if (isset($_SESSION['user_photo']) && !empty($_SESSION['user_photo'])) {
     $user_photo = 'users/' . $_SESSION['user_photo'];
 }
 ?>
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -59,4 +58,4 @@ if (isset($_SESSION['user_photo']) && !empty($_SESSION['user_photo'])) {
             </div>
         </div>
     </header>
-    <?php endif; ?>
+    <?php endif;?>

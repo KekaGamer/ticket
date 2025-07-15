@@ -64,6 +64,8 @@ if ($action == 'edit' && $id > 0) {
 
 $stmt = $conn->query("SELECT * FROM empresas ORDER BY nombre");
 $empresas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$page_title = "Gestión de Empresas";
+include_once '../includes/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -107,6 +109,31 @@ $empresas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="card">
                     <div class="card-body">
                         <table id="empresasTable" class="display" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Dirección</th>
+                                    <th>Teléfono</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($empresas as $emp): ?>
+                                    <tr>
+                                        <td><?php echo $emp['id']; ?></td>
+                                        <td><?php echo htmlspecialchars($emp['nombre']); ?></td>
+                                        <td><?php echo htmlspecialchars($emp['direccion']); ?></td>
+                                        <td><?php echo htmlspecialchars($emp['telefono']); ?></td>
+                                        <td><span class="badge <?php echo $emp['estado'] ? 'badge-success' : 'badge-danger'; ?>"><?php echo $emp['estado'] ? 'Activo' : 'Inactivo'; ?></span></td>
+                                        <td>
+                                            <a href="empresas.php?action=edit&id=<?php echo $emp['id']; ?>" class="btn btn-sm btn-primary" title="Editar"><i class="fas fa-edit"></i></a>
+                                            <a href="empresas.php?toggle=1&id=<?php echo $emp['id']; ?>" class="btn btn-sm btn-<?php echo $emp['estado'] ? 'warning' : 'success'; ?>" title="<?php echo $emp['estado'] ? 'Desactivar' : 'Activar'; ?>"><i class="fas fa-<?php echo $emp['estado'] ? 'times' : 'check'; ?>"></i></a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
                             </table>
                     </div>
                 </div>
@@ -125,7 +152,7 @@ $empresas = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             
                             <div class="form-group">
                                 <label for="direccion">Dirección</label>
-                                <textarea class="form-control" id="direccion" name="direccion" rows="3"><?php echo isset($empresa) ? htmlspecialchars($empresa['direccion']) : ''; ?></textarea>
+                                <textarea class="form-control" id="direccion" name="descripcion" rows="3"><?php echo isset($empresa) ? htmlspecialchars($empresa['direccion']) : ''; ?></textarea>
                             </div>
                             
                             <div class="form-group">
@@ -149,5 +176,10 @@ $empresas = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="../assets/js/main.js"></script>
-    </body>
+    <script>
+        $(document).ready(function() {
+            $('#empresasTable').DataTable({ language: { url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json' } });
+        });
+    </script>
+</body>
 </html>
